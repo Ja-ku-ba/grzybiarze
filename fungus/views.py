@@ -100,5 +100,5 @@ def like(request ):
             else:
                 like.value_like = 'Like'
         like.save()
-            
+        return redirect('home')
     return render(request, 'fungus/home.html')
