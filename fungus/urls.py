@@ -12,4 +12,5 @@ urlpatterns = [
 
     path('zapostuj', views.add_post, name='add_post'),
     path('like', views.like, name='like'),
+    path('dislike', views.dislike, name='dislike'),
 ]

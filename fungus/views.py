@@ -83,7 +83,7 @@ def add_post(request):
     return render(request, 'fungus/add_post.html', context)
 
 @login_required
-def like(request ):
+def like(request):
     if request.method == 'POST':
         post_id = request.POST.get('post_id')
         post_objs = Post.objects.get(id = post_id)
@@ -91,14 +91,19 @@ def like(request ):
             post_objs.like_post.remove(request.user)
         else:
             post_objs.like_post.add(request.user)
-
         like, created = Like.objects.get_or_create(user_like = request.user, post_likes=post_objs)
-
-        if not created:
-            if like.value_like == 'Like':
-                like.value_like = 'Unlike'
-            else:
-                like.value_like = 'Like'
         like.save()
         return redirect('home')
-    return render(request, 'fungus/home.html')
+
+@login_required
+def dislike(request):
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        post_objs = Post.objects.get(id = post_id)
+        if request.user in post_objs.dislike_post.all():
+            post_objs.dislike_post.remove(request.user)
+        else:
+            post_objs.dislike_post.add(request.user)
+        dislike, created = Dislike.objects.get_or_create(user_dislike = request.user, post_dislikes=post_objs)
+        dislike.save()
+        return redirect('home')
