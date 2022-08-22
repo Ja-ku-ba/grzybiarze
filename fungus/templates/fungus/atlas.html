@@ -1,0 +1,8 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    {% for fung in funguses %}
+    <a href="{% url 'munschrom_page' fung.name %}">{{fung}}</a>
+    {% endfor %}
+</div>
+{% endblock content %}

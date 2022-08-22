@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    {{munschrom}}
+    <br>
+    {% if munschrom.poisoning is False %}
+    <span>Nie trujacy</span>
+    {% else %}
+    <span>Trujący</span>
+    {% endif %}
+    <br>
+    {{munschrom.description}}
+    
+</div>
+{% endblock content %}

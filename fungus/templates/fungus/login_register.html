@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% if status == 'r' %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <label>Email:</label>
+        {{form.email}}
+        <br>
+        <label>Nazwa użytkownika:</label>
+        {{form.username}}
+        <br>
+        <label>Hasło:</label>
+        {{form.password1}}
+        <br>
+        <label>Potwierdź hasło:</label>
+        {{form.password2}}
+        <br>
+        <input type="submit" value="Potwierdź">
+    </form>
+    {% else %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <label>Nazwa użytkownika:</label>
+        <input type="text" name="username">
+        <br>
+        <label>Hasło:</label>
+        <input type="password" name="password">
+        <br>
+        <input type="submit" value="Zakoguj">
+    </form>
+    <span>Nie masz jeszcze konta?</span>
+    <br>
+    <a href="{% url 'register' %}">Zarejestruj</a>
+    {% endif %}
+
+</div>
+{% endblock content %}
