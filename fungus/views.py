@@ -91,6 +91,8 @@ def like(request):
             post_objs.like_post.remove(request.user)
         else:
             post_objs.like_post.add(request.user)
+            if request.user in post_objs.dislike_post.all():
+                post_objs.dislike_post.remove(request.user)
         like, created = Like.objects.get_or_create(user_like = request.user, post_likes=post_objs)
         like.save()
         return redirect('home')
@@ -104,6 +106,8 @@ def dislike(request):
             post_objs.dislike_post.remove(request.user)
         else:
             post_objs.dislike_post.add(request.user)
+            if request.user in post_objs.like_post.all():
+                post_objs.like_post.remove(request.user)
         dislike, created = Dislike.objects.get_or_create(user_dislike = request.user, post_dislikes=post_objs)
         dislike.save()
         return redirect('home')
