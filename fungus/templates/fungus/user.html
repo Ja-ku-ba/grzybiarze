@@ -5,16 +5,18 @@
     <div>
         {% for msg in messages %}
         <small>{{msg.posted|timesince}} temu</small>
-        <a href="{% url 'room' msg.room.id %}">{{msg}}</a>
         <br>
+        <a href="{% url 'room' msg.room.id %}">{{msg}}:</a>
+        <hr>
         {% endfor %}
     </div>
     <hr>
     <div>
         {% for post in posts %}
+        <small>{{post.added|timesince}}</small>
         <p>{{post}}</p>
         <small>{{post.like_post.all.count }} lubi, {{post.dislike_post.all.count }} nie lubi</small>
-        <br>
+        <hr>
         {% endfor %}
     </div>
 </div>

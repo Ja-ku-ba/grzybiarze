@@ -8,6 +8,7 @@ urlpatterns = [
     path('atlas/<str:pk>', views.munschrom_page, name='munschrom_page'),
 
     path('pokoje', views.rooms_page, name='rooms_page'),
+    path('stworz-pokoj', views.create_room, name='create_room'),
     path('pokoj/<str:pk>', views.room_p, name='room'),
 
     path('zarejestruj', views.register, name='register'),

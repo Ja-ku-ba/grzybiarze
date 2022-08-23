@@ -117,8 +117,19 @@ def rooms_page(request):
     context = {'rooms':rooms}
     return render(request, 'fungus/rooms_list.html', context)
 
+def create_room(request):
+    if request.method == 'POST':
+        topic = request.POST.get('topic')
+        new_room = Room.objects.create(
+            owner = request.user,
+            topic = topic,
+        )
+        return redirect('room', new_room.id)
+    return render(request, 'fungus/room_create.html')
+
 def room_p(request, pk):
     room = Room.objects.get(id=pk)
+    participants = room.participants.all()
     massages = room.message_set.all()
     context = {'room': room, 'massages':massages}
     if request.method == 'POST':
@@ -128,6 +139,7 @@ def room_p(request, pk):
             room = room,
             body = body
         )
+        room.participants.add(request.user)
         return redirect('room', room.id)
     return render(request, 'fungus/room.html', context)
 

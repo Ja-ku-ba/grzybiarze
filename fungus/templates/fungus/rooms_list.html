@@ -1,8 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
 <div>
+    <a href="{% url 'create_room' %}">Stwórz pokój</a>
+    <hr>
     {% for room in rooms %}
-    <a href="{% url 'room' room.id %}">{{room}}</a>
+    <hr>
+    <a href="{% url 'room' room.id %}">{{room|truncatechars:50}}</a>
     <br>
     {% endfor %}
 </div>

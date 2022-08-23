@@ -1,3 +1,8 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 80%;
+}
+
 #page_container {
     background-color: #f0f5f5;
 }
@@ -7,12 +12,14 @@
     margin-left: auto;
     margin-right: auto;
     background-color: #c2d6d6;
-    height: 100vw;
+    min-height: 100vw;
+    align-items: stretch;
+    padding: 5px;
 }
 
 #navbar {
     position: sticky;
-    top: 0;
+    top: -5;
     background-color: #75a3a3;
     display: flex;
     justify-content: space-around;
@@ -27,4 +34,11 @@
 
 #message_field_room {
     width: 500px;
+}
+
+#write_message {
+    position: sticky;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
 }

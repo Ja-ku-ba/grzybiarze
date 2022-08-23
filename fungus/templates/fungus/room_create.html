@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label>Temat:</label>
+        <textarea name="topic" rows="4" cols="100" maxlength="250"></textarea>
+        <input type="submit" value="Potwierdź">
+    </form>
+</div>
+{% endblock content %}
