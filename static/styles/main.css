@@ -1,0 +1,17 @@
+#page_container {
+    background-color: gray;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#page_style {
+    background-color: aliceblue;
+    height: 100vw;
+}
+
+#responsive {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}

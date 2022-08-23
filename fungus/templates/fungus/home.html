@@ -7,7 +7,7 @@
     {% endif %}
     {% for post in posts %}
     {{post}}
-    <image src="{{post.image.url}}"></image>
+    <image src="{{post.image.url}}" id="responsive"></image>
     <br>
     <div>
         <form method="POST" action="{% url 'like' %}">
@@ -27,7 +27,7 @@
             {% if request.user not in post.dislike_post.all %}
                 <button type="submit">Dislike</button>
             {% else %}
-                <button type="submit">Like</button>
+                <button type="submit">Undislike</button>
             {% endif %}
         </form>
     </div>
