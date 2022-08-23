@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+{% block content %}
+<div id="room_container">
+    <h1>{{room}}</h1>
+    <div id="message">
+        {% for msg in massages %}
+        <div id="message_owner_data">
+            <a href="{% url 'user' msg.owner.id %}">{{msg.owner}}:</a> <span>{{msg.posted|timesince}} temu</span>
+        </div>
+        <div id="message">
+            <p>{{msg}}</p>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+    <div id="write_message">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input id="message_field_room" type="text" name="body">
+            <input type="submit" valaue="Wyśli">
+        </form>
+    </div>
+</div>
+{% endblock content %}

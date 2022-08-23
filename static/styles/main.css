@@ -1,17 +1,30 @@
 #page_container {
-    background-color: gray;
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: #f0f5f5;
 }
 
 #page_style {
-    background-color: aliceblue;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #c2d6d6;
     height: 100vw;
+}
+
+#navbar {
+    position: sticky;
+    top: 0;
+    background-color: #75a3a3;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
 }
 
 #responsive {
     width: 100%;
     max-width: 250px;
-    height: auto;
+    max-height: 500px;
+}
+
+#message_field_room {
+    width: 500px;
 }

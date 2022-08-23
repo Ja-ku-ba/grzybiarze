@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Fung, Post, Like, Dislike
+from .models import Fung, Post, Like, Dislike, Room, Message
 from .forms import User_form, Post_form
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -111,3 +111,29 @@ def dislike(request):
         dislike, created = Dislike.objects.get_or_create(user_dislike = request.user, post_dislikes=post_objs)
         dislike.save()
         return redirect('home')
+
+def rooms_page(request):
+    rooms = Room.objects.all()
+    context = {'rooms':rooms}
+    return render(request, 'fungus/rooms_list.html', context)
+
+def room_p(request, pk):
+    room = Room.objects.get(id=pk)
+    massages = room.message_set.all()
+    context = {'room': room, 'massages':massages}
+    if request.method == 'POST':
+        body = request.POST.get('body')
+        Message.objects.create(
+            owner = request.user,
+            room = room,
+            body = body
+        )
+        return redirect('room', room.id)
+    return render(request, 'fungus/room.html', context)
+
+def user_page(request, pk):
+    user = User.objects.get(id=pk)
+    messages = user.message_set.all()
+    posts = Post.objects.filter(owner=pk)
+    context = {'user':user, 'messages':messages, 'posts':posts}
+    return render(request, 'fungus/user.html', context)

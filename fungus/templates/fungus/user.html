@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    <h1>{{user}}</h1>
+    <div>
+        {% for msg in messages %}
+        <small>{{msg.posted|timesince}} temu</small>
+        <a href="{% url 'room' msg.room.id %}">{{msg}}</a>
+        <br>
+        {% endfor %}
+    </div>
+    <hr>
+    <div>
+        {% for post in posts %}
+        <p>{{post}}</p>
+        <small>{{post.like_post.all.count }} lubi, {{post.dislike_post.all.count }} nie lubi</small>
+        <br>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

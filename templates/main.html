@@ -9,11 +9,13 @@
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'styles/main.css' %}">
     <!-- <script src='main.js'></script> -->
 </head>
-<body id="page_container">
-    <div id="page_style">
+<body>
+    <div id="page_container">
         {% include 'navbar.html' %}
-        {% block content %}
-        {% endblock content %}
+        <div id="page_style">
+            {% block content %}
+            {% endblock content %}
+        </div>
     </div>
 </body>
 </html>

@@ -9,6 +9,7 @@
     {{post}}
     <image src="{{post.image.url}}" id="responsive"></image>
     <br>
+    {% if request.user.is_authenticated %}
     <div>
         <form method="POST" action="{% url 'like' %}">
             {% csrf_token %}
@@ -31,6 +32,7 @@
             {% endif %}
         </form>
     </div>
+    {% endif %}
 
     <strong>{{post.like_post.all.count }} lubi, {{post.dislike_post.all.count }} nie lubi</strong>
     <hr>

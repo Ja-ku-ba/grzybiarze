@@ -54,3 +54,27 @@ class Dislike(models.Model):
 
     def __str__(self):
         return str(self.post_dislikes)
+
+
+
+class Room(models.Model):
+    host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    participants = models.ManyToManyField(User, related_name='participants', blank=True)
+    topic = models.CharField(max_length=250)
+    updated = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.topic
+
+class Message(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    body = models.TextField()
+    posted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.body
+
+    class Meta:
+        ordering = ['-posted']
