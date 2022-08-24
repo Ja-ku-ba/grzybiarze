@@ -7,6 +7,8 @@ urlpatterns = [
     path('atlas', views.atlas, name='atlas'),
     path('atlas/<str:pk>', views.munschrom_page, name='munschrom_page'),
 
+    path('wyniki-wyszukiwania', views.search, name='search'),
+
     path('pokoje', views.rooms_page, name='rooms_page'),
     path('stworz-pokoj', views.create_room, name='create_room'),
     path('pokoj/<str:pk>', views.room_p, name='room'),

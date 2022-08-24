@@ -1,0 +1,26 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    <div>
+        {% for room in rooms %}
+        {{room}}
+        <br>
+        {% endfor %}
+    </div>
+    <hr>
+    <div>
+        {% for post in posts %}
+        {{post}}
+        <br>
+        {% endfor %}
+    </div>
+    <hr>
+    <div>
+        {% for message in messages %}
+        {{message}}
+        <br>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

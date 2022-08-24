@@ -1,11 +1,14 @@
-from django.shortcuts import render, redirect
 from .models import Fung, Post, Like, Dislike, Room, Message
-from .forms import User_form, Post_form
-from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from .forms import User_form, Post_form
+from django.contrib import messages
 
+
+
+from django.db.models import Q
 # Create your views here.
 
 def home(request):
@@ -149,3 +152,28 @@ def user_page(request, pk):
     posts = Post.objects.filter(owner=pk)
     context = {'user':user, 'messages':messages, 'posts':posts}
     return render(request, 'fungus/user.html', context)
+
+#room, post, message
+#    room_messages = Message.objects.filter(
+    #     Q(room__topic__name__icontains=q)
+    # )
+    # rooms = Room.objects.filter(
+    #     Q(topic__name__icontains=q) |
+    #     Q(name__icontains=q) |
+    #     Q(descrption__icontains=q)        
+    #     )
+    # room_
+def search(request):
+    if request.method == 'POST':
+        q = request.POST.get('Q') if request.POST.get('Q') != None else ''
+        rooms = Room.objects.filter(
+            Q(topic__icontains=q)
+        )
+        posts = Post.objects.filter(
+            Q(body__icontains=q)
+        )
+        messages = Message.objects.filter(
+            Q(body__icontains=q)
+        )
+        context = {'rooms':rooms, 'posts':posts, 'messages':messages}
+        return render(request, 'fungus/results.html', context)

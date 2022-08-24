@@ -5,7 +5,7 @@
     <hr>
     {% for room in rooms %}
     <hr>
-    <a href="{% url 'room' room.id %}">{{room|truncatechars:50}}</a>
+    <a href="{% url 'room' room.id %}">{{room|truncatewords:25}}</a>
     <br>
     {% endfor %}
 </div>

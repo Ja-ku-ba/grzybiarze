@@ -2,6 +2,15 @@
     <a href="{% url 'home' %}">Home</a>
     <a href="{% url 'rooms_page' %}">Pokoje</a>
     <a href="{% url 'atlas' %}">Atlas</a>
+
+    <div>
+        <form method="get" action="{% url 'home' %}">
+            {% csrf_token %}
+            <input type="text" name="search_bar">
+            <input type="submit" name="Q" value="szukaj">
+        </form>
+    </div>
+
     {% if request.user.is_authenticated %}
     <a href="{% url 'user' request.user.id %}">{{request.user}}</a>
     <a href="{% url 'user_logout' %}">Wyloguj</a>
