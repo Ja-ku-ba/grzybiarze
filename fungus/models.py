@@ -20,6 +20,9 @@ class Post(models.Model):
     def __str__(self):
         return self.body[:50]
 
+    class Meta:
+        ordering = ['-added']
+
     @property
     def num_likes(self):
         return self.like.all().count()
