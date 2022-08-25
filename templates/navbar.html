@@ -4,10 +4,10 @@
     <a href="{% url 'atlas' %}">Atlas</a>
 
     <div>
-        <form method="get" action="{% url 'home' %}">
+        <form method="GET" action="{% url 'search' %}">
             {% csrf_token %}
-            <input type="text" name="search_bar">
-            <input type="submit" name="Q" value="szukaj">
+            <input type="text" name="Q">
+            <input type="submit" value="szukaj">
         </form>
     </div>
 

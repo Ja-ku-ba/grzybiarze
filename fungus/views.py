@@ -153,27 +153,16 @@ def user_page(request, pk):
     context = {'user':user, 'messages':messages, 'posts':posts}
     return render(request, 'fungus/user.html', context)
 
-#room, post, message
-#    room_messages = Message.objects.filter(
-    #     Q(room__topic__name__icontains=q)
-    # )
-    # rooms = Room.objects.filter(
-    #     Q(topic__name__icontains=q) |
-    #     Q(name__icontains=q) |
-    #     Q(descrption__icontains=q)        
-    #     )
-    # room_
 def search(request):
-    if request.method == 'POST':
-        q = request.POST.get('Q') if request.POST.get('Q') != None else ''
-        rooms = Room.objects.filter(
-            Q(topic__icontains=q)
-        )
-        posts = Post.objects.filter(
-            Q(body__icontains=q)
-        )
-        messages = Message.objects.filter(
-            Q(body__icontains=q)
-        )
-        context = {'rooms':rooms, 'posts':posts, 'messages':messages}
-        return render(request, 'fungus/results.html', context)
+    q = request.GET.get('Q') if request.GET.get('Q') != None else ''
+    rooms = Room.objects.filter(
+        Q(topic__icontains=q)
+    )
+    posts = Post.objects.filter(
+        Q(body__icontains=q)
+    )
+    messages = Message.objects.filter(
+        Q(body__icontains=q)
+    )
+    context = {'rooms':rooms, 'posts':posts, 'messages':messages}
+    return render(request, 'fungus/results.html', context)
