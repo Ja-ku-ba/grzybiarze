@@ -154,7 +154,7 @@ def user_page(request, pk):
     return render(request, 'fungus/user.html', context)
 
 def search(request):
-    q = request.GET.get('Q') if request.GET.get('Q') != None else ''
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
     rooms = Room.objects.filter(
         Q(topic__icontains=q)
     )
@@ -164,5 +164,6 @@ def search(request):
     messages = Message.objects.filter(
         Q(body__icontains=q)
     )
-    context = {'rooms':rooms, 'posts':posts, 'messages':messages}
+    comb_res = rooms.count() + posts.count() + messages.count()
+    context = {'rooms':rooms, 'posts':posts, 'messages':messages, 'comb_res':comb_res}
     return render(request, 'fungus/results.html', context)

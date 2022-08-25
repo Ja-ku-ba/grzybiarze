@@ -1,22 +1,29 @@
 {% extends 'main.html' %}
 {% block content %}
 <div>
+    {% if rooms.count != 0 %}
     <div>
-        <h3>Pokoje</h3>
+        <h1>Pokoje</h1>
         {% for room in rooms %}
         <a href="{% url 'room' room.id %}">{{room}}</a>
         <br>
         {% endfor %}
+        <hr>
     </div>
-    <hr>
+    {% endif %}
+
+    {% if posts.count != 0 %}
     <div>
         <h1>Posty</h1>
         {% for post in posts %}
         </a>{{post}}
         <br>
         {% endfor %}
+        <hr>
     </div>
-    <hr>
+    {% endif %}
+
+    {% if messages.count != 0 %}
     <div>
         <h1>Wiadomości</h1>
         {% for message in messages %}
@@ -24,6 +31,12 @@
         <br>
         {% endfor %}
     </div>
+    {% endif %}
+    {% if comb_res == 0 %}
+    <div>
+        <h1>Nie znaleziono wyników odpowiadających zapytaniu</h1>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}

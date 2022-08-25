@@ -5,9 +5,8 @@
 
     <div>
         <form method="GET" action="{% url 'search' %}">
-            {% csrf_token %}
-            <input type="text" name="Q">
-            <input type="submit" value="szukaj">
+            <input type="text" name="q">
+            <input type="submit" value="szukaj" >
         </form>
     </div>
 
