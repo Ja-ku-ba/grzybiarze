@@ -2,22 +2,25 @@
 {% block content %}
 <div>
     <div>
+        <h3>Pokoje</h3>
         {% for room in rooms %}
-        {{room}}
+        <a href="{% url 'room' room.id %}">{{room}}</a>
         <br>
         {% endfor %}
     </div>
     <hr>
     <div>
+        <h1>Posty</h1>
         {% for post in posts %}
-        {{post}}
+        </a>{{post}}
         <br>
         {% endfor %}
     </div>
     <hr>
     <div>
+        <h1>Wiadomości</h1>
         {% for message in messages %}
-        {{message}}
+        <a href="{% url 'room' message.room.id %}">{{message|truncatechars:50}}</a>
         <br>
         {% endfor %}
     </div>
