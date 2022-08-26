@@ -4,14 +4,16 @@ body {
 }
 
 #page_container {
-    background-color: #f0f5f5;
+    background-color: #f9f2ec;
+    margin-left: -8px;
+    margin-right: -8px;
 }
 
 #page_style {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #c2d6d6;
+    background-color: #d9b38c;
     min-height: 100vw;
     align-items: stretch;
     padding: 5px;
@@ -23,7 +25,7 @@ body {
     margin-top: -8px;
     margin-left: -8px;
     margin-right: -8px;
-    background-color: #75a3a3;
+    background-color: #86592d;
     display: flex;
     justify-content: space-around;
     padding: 5px;
@@ -64,4 +66,65 @@ body {
 
 .thumbs {
     display: inline-block;
+}
+
+input::-webkit-input-placeholder {
+    font-family: 'Material Symbols Rounded';
+}
+
+a:link {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 130%;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: black;
+    font-size: 120%;
+}
+
+a:active {
+    color: black;
+}
+
+#navbar a:link {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 130%;
+}
+
+#navbar a:visited {
+    color: black;
+}
+
+#navbar a:hover {
+    color: black;
+}
+
+#navbar a:active {
+    color: black;
+}
+
+#posts {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+#post {
+    display: block;
+}
+
+.thumb {
+    display: inline-block;
+}
+
+#thumbs {
+    display: block;
 }

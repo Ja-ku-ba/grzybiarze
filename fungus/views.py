@@ -13,6 +13,7 @@ from django.db.models import Q
 
 def home(request):
     posts = Post.objects.all()
+    # post_new = Post.objects.order_by('')
     context = {'posts':posts}
     return render(request, 'fungus/home.html', context)
 
