@@ -112,13 +112,15 @@ a:active {
 }
 
 #posts {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
 }
 
 #post {
     display: block;
+
 }
 
 .thumb {
