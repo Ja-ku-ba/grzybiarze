@@ -11,13 +11,14 @@
     <br>
     {% if request.user.is_authenticated %}
     <div>
+        
         <form method="POST" action="{% url 'like' %}">
             {% csrf_token %}
             <input type="hidden" name='post_id' value='{{post.id}}'>
             {% if request.user not in post.like_post.all %}
-                <button type="submit">Like</button>
+                <button type="submit"><i class="material-symbols-rounded thumbs" id="thumb-up-unclicked">Thumb_Up</i></button>
             {% else %}
-                <button type="submit">Unlike</button>
+                <button type="submit"><i class="material-symbols-rounded thumbs">Thumb_Up</i></button>
             {% endif %}
         </form>
     </div>
@@ -26,9 +27,9 @@
             {% csrf_token %}
             <input type="hidden" name='post_id' value='{{post.id}}'>
             {% if request.user not in post.dislike_post.all %}
-                <button type="submit">Dislike</button>
+                <button type="submit"><i class="material-symbols-rounded thumbs" id="thumb-down-unclicked">Thumb_Down</i></button>
             {% else %}
-                <button type="submit">Undislike</button>
+                <button type="submit"><i class="material-symbols-rounded thumbs">Thumb_Down</i></button>
             {% endif %}
         </form>
     </div>
