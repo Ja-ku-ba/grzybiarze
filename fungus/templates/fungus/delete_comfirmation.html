@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block content %}
+<div>
+    <form method="post" action="">
+        {% csrf_token %}
+        <label>Czy napewno chcesz usunąć pokój: {{room}}</label>
+        <input type="submit" name="delete" value="Potwierdź">
+    </form>
+    <a href="{% url 'home' %}">Wróć</a>
+</div>
+{% endblock content %}

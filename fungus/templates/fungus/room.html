@@ -2,15 +2,21 @@
 {% block content %}
 <div id="room_container">
     <h1>{{room}}</h1>
+    {% if request.user == room.owner %}
+        <a href='{% url "delete_room" room.id %}'>Usuń</a>
+    {% endif %}
     <div id="message">
         {% for msg in massages %}
-        <div id="message_owner_data">
-            <a href="{% url 'user' msg.owner.id %}">{{msg.owner}}:</a> <span>{{msg.posted|timesince}} temu</span>
-        </div>
-        <div id="message">
-            <p>{{msg}}</p>
-        </div>
-        <hr>
+            {% if request.user == msg.owner %}
+            <a href="{% url 'hide_message' msg.id %}">Ukryj</a>
+            {% endif %}
+            <div id="message_owner_data">
+                <a href="{% url 'user' msg.owner.id %}">{{msg.owner}}:</a> <span>{{msg.posted|timesince}} temu</span>
+            </div>
+            <div id="message">
+                <p>{{msg}}</p>
+            </div>
+            <hr>
         {% endfor %}
     </div>
     <div id="write_message">

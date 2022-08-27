@@ -117,7 +117,7 @@ def dislike(request):
         return redirect('home')
 
 def rooms_page(request):
-    rooms = Room.objects.all()
+    rooms = Room.objects.all().order_by('-updated')
     context = {'rooms':rooms}
     return render(request, 'fungus/rooms_list.html', context)
 
@@ -146,6 +146,29 @@ def room_p(request, pk):
         room.participants.add(request.user)
         return redirect('room', room.id)
     return render(request, 'fungus/room.html', context)
+
+def hide_message(request, pk):
+    # room = Room.objects.get(id=pk)
+    # message = room.message_set.all()
+    message = Message.objects.get(id=pk)
+    context = {'message':message}
+    n_msg = ''
+    print(type(message))
+    if request.method == 'POST':
+        new_message = Message.objects.update(
+            body = n_msg
+        )
+        new_message.save()
+        return redirect('room', message.room.id)
+    return render(request, 'fungus/hide_message.html', context)
+
+def delete_room(request, pk):
+    room = Room.objects.get(id=pk)
+    context = {'room':room}
+    if request.method == 'POST':
+        room.delete()
+        return redirect('home')
+    return render(request, 'fungus/delete_comfirmation.html', context)
 
 def user_page(request, pk):
     user = User.objects.get(id=pk)

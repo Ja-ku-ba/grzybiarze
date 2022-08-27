@@ -12,6 +12,8 @@ urlpatterns = [
     path('pokoje', views.rooms_page, name='rooms_page'),
     path('stworz-pokoj', views.create_room, name='create_room'),
     path('pokoj/<str:pk>', views.room_p, name='room'),
+    path('usun-pokoj/<str:pk>', views.delete_room, name='delete_room'),
+    path('ukryj-wiadomosc/<str:pk>', views.hide_message, name='hide_message'),
 
     path('zarejestruj', views.register, name='register'),
     path('zaloguj', views.user_login, name='user_login'),
