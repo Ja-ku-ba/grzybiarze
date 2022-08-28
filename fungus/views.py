@@ -148,17 +148,14 @@ def room_p(request, pk):
     return render(request, 'fungus/room.html', context)
 
 def hide_message(request, pk):
-    # room = Room.objects.get(id=pk)
-    # message = room.message_set.all()
     message = Message.objects.get(id=pk)
     context = {'message':message}
-    n_msg = ''
-    print(type(message))
+    print(message.id)
     if request.method == 'POST':
-        new_message = Message.objects.update(
-            body = n_msg
-        )
-        new_message.save()
+        print(message.id)
+        message.body = 'Wiadomość ukryta'
+        message.save()
+        print(message.id)
         return redirect('room', message.room.id)
     return render(request, 'fungus/hide_message.html', context)
 
